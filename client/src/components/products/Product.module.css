@@ -1,0 +1,59 @@
+.product {
+  position: relative;
+  list-style-type: none;
+  border-radius: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  background-color: rgba(236, 172, 179, 0.736);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+}
+.product:hover {
+  transition: 500ms;
+  background-color: rgba(229, 25, 222, 0.222);
+  color: white;
+}
+.badge {
+  position: absolute;
+  top: 0.313rem;
+  left: 0;
+  right: 0;
+  font-size: x-large;
+  color: red;
+}
+.productButton {
+  padding: 0.938rem 2rem;
+  border-radius: 0.5rem;
+  background-color: #2d9bf0;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  font-family: "Poppins", sans-serif;
+}
+.productImage {
+  width: 100%;
+  border-radius: 1rem;
+  object-fit: cover;
+  display: block;
+}
+.discountedProduct {
+  border: 0.313rem solid red;
+}
+.discountedProduct:hover {
+  color: whitesmoke;
+  border: 0.313rem solid black;
+}
+
+.productName {
+  font-size: large;
+}
+.priceTag {
+  font-size: large;
+  font-weight: 500;
+}

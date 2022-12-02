@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Poppins", "Segoe UI", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+.mainContent {
+  flex-grow: 2;
+  margin: 0;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 75rem;
+}
+
+.narrowContainerLayout {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+.mainLayout .narrowContainerLayout {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pagePadding {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.sectionPadding {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+@media only screen and (min-width: 62rem) {
+  .mainContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 0 auto;
+    max-width: 75rem;
+  }
+  .halfWidth {
+    max-width: 42rem;
+  }
+}
+.leftAlign {
+  text-align: left;
+}
+.rightAlign {
+  text-align: right;
+}

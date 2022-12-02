@@ -1,0 +1,233 @@
+openapi: 3.0.2
+info:
+  license:
+    name: Placeholder
+    url: "https://loremipsum.com"
+  version: "1.0"
+  title: Welcome to the Products API!
+  description: This API allows user to handle products
+  contact:
+    url: "http://localhost:5001/api"
+    email: rohan.chandra@developersinstitute.co.nz
+    name: Rohan Chandra
+servers:
+  - url: "http://localhost:5001/api"
+    description: Development server
+  - url: "https://t3-project-server.onrender.com/api"
+    description: Production server
+paths:
+  /products:
+    get:
+      summary: Returns a list of products
+      description: Get a list of products
+      operationId: get-products
+      tags:
+        - products
+      parameters:
+        - schema:
+            type: number
+            default: 10
+            minimum: 1
+          in: query
+          name: limit
+          description: The number of products to return in a page
+          required: false
+        - schema:
+            type: number
+            default: 1
+            minimum: 1
+          in: query
+          name: page
+          description: The page to be displayed
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  products:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Product"
+                  currentPage:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  itemsPerPage:
+                    type: integer
+                  totalItems:
+                    type: integer
+                required:
+                  - products
+                  - currentPage
+                  - totalPages
+                  - itemsPerPage
+                  - totalItems
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /reports:
+    get:
+      summary: Returns a list of reports
+      description: Get a list of reports
+      operationId: get-reports
+      security:
+        - bearerAuth: []
+      tags:
+        - reports
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  categoryReport:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/CategoryReport"
+                  discountReport:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/DiscountReport"
+              examples: {}
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Unauthenticated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+              examples:
+                example-1:
+                  value:
+                    message: You are unauthenticated
+        "403":
+          description: Unauthorised
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+              examples:
+                example-1:
+                  value:
+                    message: You are not authorised
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          type: string
+        categoryName:
+          type: string
+          nullable: true
+        imageName:
+          type: string
+          nullable: true
+        imageDescription:
+          type: string
+          nullable: true
+        discountValue:
+          type: number
+          nullable: true
+        discountType:
+          type: string
+          enum:
+            - percentage off
+            - fixed amount off
+          nullable: true
+      required:
+        - id
+        - name
+        - description
+        - price
+        - categoryName
+        - imageName
+        - imageDescription
+        - discountValue
+        - discountType
+    CategoryReport:
+      title: CategoryReport
+      type: object
+      description: Schema for /reports
+      properties:
+        categoryName:
+          type: string
+        totalProducts:
+          type: integer
+        discountedProducts:
+          type: integer
+      required:
+        - categoryName
+        - totalProducts
+        - discountedProducts
+    DiscountReport:
+      title: DiscountReport
+      type: object
+      description: "Schema for discount report  "
+      properties:
+        discountType:
+          type: string
+          enum:
+            - fixed amount off
+            - percentage off
+          nullable: true
+        totalProducts:
+          type: integer
+      required:
+        - discountType
+        - totalProducts
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+tags:
+  - name: products
+    description: Get a list of products
+  - name: reports
+    description: Describes the categories and products that have discounts applied

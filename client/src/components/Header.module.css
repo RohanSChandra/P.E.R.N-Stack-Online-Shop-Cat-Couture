@@ -1,0 +1,113 @@
+.nav {
+  width: 100%;
+  background-color: #eeeeee83;
+  opacity: 0.8;
+  display: flex;
+  justify-content: space-between;
+}
+.navButton {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.menu {
+  display: flex;
+}
+.rightLinks {
+  display: block;
+  text-align: center;
+}
+.rightLinkItems {
+  list-style-type: none;
+  margin-bottom: 1rem;
+}
+
+.link {
+  color: black;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  text-decoration: none;
+}
+.link:hover {
+  text-decoration: underline;
+}
+.activeLink {
+  color: #0ea68c;
+  text-decoration: none;
+}
+.activeLink:hover {
+  text-decoration: underline;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.header .logo {
+  font-size: 3rem;
+  margin: 2rem 0rem;
+}
+
+.customButtonLogIn {
+  padding: 0.938rem 2rem;
+  border-radius: 0.5rem;
+  background-color: #2d9bf0;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  opacity: 0.6;
+  font-family: "Poppins", sans-serif;
+}
+.customButtonLogIn:hover {
+  opacity: 1;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  color: white;
+}
+.customButtonLogOut {
+  padding: 0.938rem 2rem;
+  border-radius: 0.5rem;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+}
+.customButtonLogOut:hover {
+  transition: 0.3s;
+  opacity: 0.6;
+  background: rgb(131, 58, 180);
+  background: linear-gradient(
+    90deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
+}
+.logo {
+  text-align: center;
+}
+
+@media only screen and (min-width: 62rem) {
+  .rightLinks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
